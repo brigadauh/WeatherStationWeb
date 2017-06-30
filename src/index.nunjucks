@@ -1,0 +1,17 @@
+{% set title = 'Home' %}
+{% extends '_layout.nunjucks' %}
+
+{% block head %}
+    <script src="/scripts/index.js" type="text/javascript"></script>
+{% endblock %}
+
+{% block content %}
+<h1>Latest Data:</h1>
+<div>
+<span>Temperature:</span><span id="current_temp">N/A</span>&deg;<span id="current_temp_unit"></span>
+</div>
+<div>
+<span>Relative humidity:</span><span id="current_humidity">N/A</span>%
+</div>
+<span>Updated:</span><span id="temp_humid_last_reported">N/A</span>
+{% endblock %}
