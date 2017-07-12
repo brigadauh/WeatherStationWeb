@@ -1,0 +1,29 @@
+{
+  "name": "WeatherStationWeb",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "browser-sync": "^2.18.12",
+    "gulp": "^3.9.1",
+    "gulp-nunjucks-render": "^2.2.1",
+    "gulp-nunjucks": "^3.0.0",
+    "http-proxy": "^1.16.2",
+    "nunjucks": "^3.0.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brigadauh/WeatherStationWeb.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/brigadauh/WeatherStationWeb/issues"
+  },
+  "homepage": "https://github.com/brigadauh/WeatherStationWeb#readme"
+}
