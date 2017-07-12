@@ -9,21 +9,33 @@ var PATH = {
     src: {
       baseDir: 'src',
       STYLES: 'src/styles',
-      SCRIPTS: 'src/scripts'},
+      SCRIPTS: 'src/scripts',
+      IMAGES: 'src/images'
+    },
     dst: {
       baseDir: 'dist',
       STYLES: 'dist/styles',
-      SCRIPTS: 'dist/scripts'
+      SCRIPTS: 'dist/scripts',
+      IMAGES: 'dist/images'
     }
 } ;
 var TEMPL = PATH.src.baseDir+'/templates';
 
-gulp.task('serve', ['html', 'styles', 'scripts'], function() {
+gulp.task('serve', ['html', 'styles', 'scripts','images','misc'], function() {
   const proxy = httpProxy.createProxyServer({
     target: 'http://192.168.1.3:8888',
     changeOrigin: true,
     secure: false
   });
+  proxy.on (
+      'error',
+      function(err,req,res)
+      {
+          res.writeHead(500, {'Content-Type': 'text/plain'});
+          res.end('Cannot connect to wapi server');
+
+      }
+  )
 
   browserSync.init({
     notify: false,
@@ -42,23 +54,32 @@ gulp.task('serve', ['html', 'styles', 'scripts'], function() {
       }
 
       return next();
-    }  
+    }
   });
   gulp.watch(PATH.src.baseDir+"/*.html").on('change', reload);
+  gulp.watch(PATH.src.SCRIPTS+"/*.js",['scripts']);
+  gulp.watch(PATH.src.SCC+"/*.css",['styles']);
 });
 gulp.task('styles', function() {
     return gulp.src(PATH.src.STYLES+"/*.css")
         .pipe(gulp.dest(PATH.dst.STYLES))
         .pipe(reload({stream: true}));
-});  
+});
 gulp.task('scripts', function() {
     return gulp.src(PATH.src.SCRIPTS+"/*.js")
         .pipe(gulp.dest(PATH.dst.SCRIPTS))
         .pipe(reload({stream: true}));
-});  
-
+});
+gulp.task('images',function() {
+    return gulp.src(PATH.src.IMAGES+"/*.*")
+        .pipe(gulp.dest(PATH.dst.IMAGES));
+});
 gulp.task( 'html', function() {
-    return gulp.src( PATH.src.baseDir + '/**.+(html|nunjucks)' )
+    return gulp.src( [PATH.src.baseDir + '/**.+(html|nunjucks)' ] )
     .pipe( nunjucksRender({path: [TEMPL]}) )
     .pipe( gulp.dest( PATH.dst.baseDir ) ) ;
 } ) ;
+gulp.task('misc', function(){
+    return gulp.src([PATH.src.baseDir+'/favicon.ico'])
+        .pipe(gulp.dest( PATH.dst.baseDir ) ) ;
+});

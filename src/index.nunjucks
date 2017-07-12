@@ -3,15 +3,26 @@
 
 {% block head %}
     <script src="/scripts/index.js" type="text/javascript"></script>
+    <link href="/styles/index.css" type="text/css" rel="stylesheet" />
 {% endblock %}
 
 {% block content %}
-<h1>Latest Data:</h1>
-<div>
-<span>Temperature:</span><span id="current_temp">N/A</span>&deg;<span id="current_temp_unit"></span>
+<div class="main">
+<h1 >
+    <div>
+        <span id="current_temp" class="temp">N/A</span><span class="temp-degrees">&deg;</span><span id="current_temp_unit" class="temp-unit"></span>
+    </div>
+    <div>
+        <span id="current_temp_2" class="temp-2"></span><span class="temp-degrees-2">&deg;</span><span id="current_temp_unit_2" class="temp-unit-2"></span>
+    </div>
+</h1>
+
+<div class="misc-data">
+    <span>Humidity:</span><span id="current_humidity">N/A</span>%
 </div>
-<div>
-<span>Relative humidity:</span><span id="current_humidity">N/A</span>%
+
+<div class="misc-data">
+    <span>Updated:</span><span id="temp_humid_last_reported">N/A</span>
 </div>
-<span>Updated:</span><span id="temp_humid_last_reported">N/A</span>
+</div>
 {% endblock %}

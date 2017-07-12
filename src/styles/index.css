@@ -1,3 +1,36 @@
 body {
-
+    max-width:600px;
+    margin:0 auto;
+}
+h1 {
+    margin-top: 4em;
+    text-align: center;
+}
+.main {
+    max-width: 275px;
+    margin: 0 auto;
+}
+.temp {
+    font-size: 4em;
+}
+.temp-2 {
+    font-size:4em;
+}
+.temp-unit {
+    font-size: 1.5em;
+}
+.temp-unit-2 {
+    font-size: 1.5em;
+}
+.temp-degrees {
+    font-size: 3em;
+    vertical-align: top;
+}
+.temp-degrees-2 {
+    font-size: 3em;
+    vertical-align: top;
+}
+.misc-data {
+    text-align: left;
+    margin-left: 2em;
 }
